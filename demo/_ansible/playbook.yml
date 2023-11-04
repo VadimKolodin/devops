@@ -9,6 +9,9 @@
     - debug: var={{item}}
       with_items: dir_out.stdout_lines
 
+    - name: test docker
+      command: docker --version
+
     - name: create docker image
       command: docker build -t demo:latest .
 
