@@ -4,12 +4,12 @@
       directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
-    - docker_image:
-      name: demo:latest
-      build:
-        path: .
+    - name: Build image and with build args
+      docker_image:
+        name: demo
+        build:
+          path: /path/to/build/dir
         source: build
-      state: present
 
     - name: create docker image
       command: docker build -t demo:latest .
