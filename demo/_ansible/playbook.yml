@@ -1,5 +1,4 @@
-- hosts: ansible
-  user: root
+- hosts: localhost
 
   tasks:
     - name: create docker image
