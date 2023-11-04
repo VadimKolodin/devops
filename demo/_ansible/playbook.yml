@@ -1,6 +1,6 @@
 - hosts: localhost
   vars:
-      directory: /var/jenkins_home/workspace/lab3
+      directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
     - command: "ls {{directory}}"
