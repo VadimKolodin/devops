@@ -4,6 +4,9 @@
       directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
+    - name: install docker
+      yum: name=docker
+
     - name: Build image
       docker_image:
         name: demo
