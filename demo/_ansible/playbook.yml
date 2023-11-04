@@ -1,7 +1,14 @@
----
-- name: "Test playbook run"
-  hosts: localhost
+- hosts: ansible
+  user: root
+
   tasks:
-    - name: "Debug"
-      ansible.builtin.debug:
-        msg: "Test debug"
+    - name: create docker image
+      command: docker build -t demo:latest demo/_docker
+      args:
+        chdir: /opt/docker
+
+    - name: create tag to push image onto dockerhub
+      command: docker tag demo:latest vadimkolodin/demo:latest
+
+    - name: push docker image onto dockerhub
+      command: docker push vadimkolodin/demo:latest
