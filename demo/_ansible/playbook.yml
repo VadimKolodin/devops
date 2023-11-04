@@ -1,14 +1,14 @@
 - hosts: localhost
   user: root
   vars:
-      directory: /var/jenkins_home/workspace/lab3
+      directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
-    - name: Build image and with build args
+    - name: Build image
       docker_image:
         name: demo
         build:
-          path: /demo
+          path: /var/jenkins_home/workspace/lab3/demo
         source: build
 
     - name: create docker image
