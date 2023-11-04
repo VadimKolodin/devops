@@ -10,7 +10,7 @@
       with_items: dir_out.stdout_lines
 
     - name: create docker image
-      command: docker build -t demo:latest 'demo/_docker'
+      command: docker build -t demo:latest "demo/_docker"
 
 
     - name: create tag to push image onto dockerhub
