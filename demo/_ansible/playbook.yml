@@ -6,6 +6,8 @@
 
     - name: create docker image
       command: docker build -t demo:latest .
+      args:
+        chdir: /var/jenkins_home/workspace/lab3/demo
 
     - name: create tag to push image onto dockerhub
       command: docker tag demo:latest vadimkolodin/demo:latest
