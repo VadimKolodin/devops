@@ -1,6 +1,10 @@
 - hosts: localhost
 
   tasks:
+
+    - debug:
+        msg: "{{ lookup('env', 'PWD') }}"
+
     - name: create docker image
       command: docker build -t demo:latest demo/_docker
       args:
