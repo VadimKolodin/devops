@@ -1,5 +1,5 @@
 - hosts: localhost
-  user: root
+  become: yes
   vars:
       directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
