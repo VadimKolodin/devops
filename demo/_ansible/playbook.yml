@@ -3,17 +3,32 @@
       directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
-    - command: "ls {{directory}}"
-      register: dir_out
+    - name: Install pip3
+      yum:
+        name: python3-pip
+        state: latest
 
-    - debug: var={{item}}
-      with_items: dir_out.stdout_lines
+    - name: Install Docker module for Python (used by Ansible)
+      pip:
+        name:
+          - docker
+
 
     - name: test docker
       command: docker --version
 
     - name: create docker image
       command: docker build -t demo:latest .
+
+    - name: add GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: add docker repository to apt
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
 
 
     - name: create tag to push image onto dockerhub
