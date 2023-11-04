@@ -3,7 +3,7 @@
   tasks:
 
     - name: create docker image
-      command: docker build -t demo:latest demo/_docker
+      command: docker build -t demo:latest 'demo/_docker'
       args:
         chdir: /var/jenkins_home/workspace/lab3
 
