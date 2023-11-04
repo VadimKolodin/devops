@@ -2,6 +2,12 @@
 
   tasks:
 
+    - command: "ls {{directory}}"
+      register: dir_out
+
+    - debug: var={{item}}
+      with_items: dir_out.stdout_lines
+
     - name: create docker image
       command: docker build -t demo:latest 'demo/_docker'
       args:
