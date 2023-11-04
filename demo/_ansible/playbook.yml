@@ -1,11 +1,11 @@
 - hosts: localhost
   user: root
   vars:
-      directory: /var/jenkins_home/workspace/lab3
+      directory: /var/jenkins_home/workspace/lab3/demo
   tasks:
 
     - name: create docker image
-      command: docker build -t demo:latest /demo
+      command: docker build -t demo:latest .
 
     - name: create tag to push image onto dockerhub
       command: docker tag demo:latest vadimkolodin/demo:latest
