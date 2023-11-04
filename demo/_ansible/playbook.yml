@@ -12,5 +12,8 @@
     - name: create tag to push image onto dockerhub
       command: docker tag demo:latest vadimkolodin/demo:latest
 
+    - name: login to docker
+      command: docker login -u "'{{ lookup('ansible.builtin.env', 'DOCKER_USERNAME') }}'" -p "'{{ lookup('ansible.builtin.env', 'DOCKER_PASSWORD') }}'" docker.io
+
     - name: push docker image onto dockerhub
       command: docker push vadimkolodin/demo:latest
