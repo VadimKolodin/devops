@@ -4,7 +4,7 @@
   tasks:
 
     - name: Install pip3
-      yum:
+      apt_key:
         name: python3-pip
         state: latest
 
