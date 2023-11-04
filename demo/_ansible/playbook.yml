@@ -4,9 +4,9 @@
   tasks:
 
     - name: Install pip3
-      apt_key:
+      yum3:
         name: python3-pip
-        state: present
+        state: latest
 
     - name: Install Docker module for Python (used by Ansible)
       pip:
@@ -19,17 +19,6 @@
 
     - name: create docker image
       command: docker build -t demo:latest .
-
-    - name: add GPG key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: add docker repository to apt
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu bionic stable
-        state: present
-
 
     - name: create tag to push image onto dockerhub
       command: docker tag demo:latest vadimkolodin/demo:latest
